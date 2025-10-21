@@ -1918,11 +1918,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\marti\\OneDrive\\Escritorio\\DAM2\\AccesDades\\acces_dades\\Exercici1\\Botiga.csproj",
+      "projectUniqueName": "C:\\Users\\marti\\Desktop\\2DAM\\AccesDades\\Botiga\\acces_dades\\Exercici1\\Botiga.csproj",
       "projectName": "Botiga",
-      "projectPath": "C:\\Users\\marti\\OneDrive\\Escritorio\\DAM2\\AccesDades\\acces_dades\\Exercici1\\Botiga.csproj",
+      "projectPath": "C:\\Users\\marti\\Desktop\\2DAM\\AccesDades\\Botiga\\acces_dades\\Exercici1\\Botiga.csproj",
       "packagesPath": "C:\\Users\\marti\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\marti\\OneDrive\\Escritorio\\DAM2\\AccesDades\\acces_dades\\Exercici1\\obj\\",
+      "outputPath": "C:\\Users\\marti\\Desktop\\2DAM\\AccesDades\\Botiga\\acces_dades\\Exercici1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\marti\\AppData\\Roaming\\NuGet\\NuGet.Config",

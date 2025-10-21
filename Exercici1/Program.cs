@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Botiga.Services;
-using Botiga.Endpoints;
+using Botiga.EndPoints;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -16,5 +16,8 @@ WebApplication webApp = builder.Build();
 
 // Registra els endpoints en un mètode separat
 webApp.MapProductEndpoints(dbConn);
+webApp.MapFamiliaEndpoints(dbConn);
+webApp.MapCarrosEndpoints(dbConn);
+webApp.MapCarroDeLaCompraEndpoints(dbConn);
 
 webApp.Run();

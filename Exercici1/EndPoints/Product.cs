@@ -2,59 +2,46 @@
 using Botiga.Services;
 using Botiga.Model;
 
-namespace Botiga.Endpoints;
+namespace Botiga.EndPoints;
 
-public static class Endpoints
+public static class EndpointsProduct
 {
     public static void MapProductEndpoints(this WebApplication app, DatabaseConnection dbConn)
     {
-        // GET /products
-        app.MapGet("/products", () =>
+        // GET /product
+        app.MapGet("/product", () =>
         {
-            List<ProductADO> products = ProductADO.GetAll(dbConn);
-            return Results.Ok(products);
+            List<Product> productes = ProductADO.GetAll(dbConn);
+            return Results.Ok(productes);
         });
 
-        // GET Product by id
-        app.MapGet("/products/{id}", (Guid id) =>
+        // GET /product/{id}
+        app.MapGet("/product/{id}", (Guid id) =>
         {
-            ProductADO product = ProductADO.GetById(dbConn, id);
+            Product producte = ProductADO.GetById(dbConn, id)!;
 
-            return product is not null
-                ? Results.Ok(product)
-                : Results.NotFound(new { message = $"Product with Id {id} not found." });
-
-            // if (product is not null)
-            // {
-            //     return Results.Ok(product);
-            // }
-            // else
-            // {
-            //     return Results.NotFound(new { message = $"Product with Id {id} not found." });
-            // }
+            return producte is not null
+                ? Results.Ok(producte)
+                : Results.NotFound(new { message = $"Producte amb Id {id} no trobat." });
         });
 
-
-
-
-        // POST /products
-        app.MapPost("/products", (ProductRequest req) =>
+        // POST /product
+        app.MapPost("/product", (ProductRequest req) =>
         {
-            ProductADO productADO = new ProductADO
+            Product producte = new Product
             {
                 Id = Guid.NewGuid(),
-                Code = req.Code,
-                Name = req.Name,
-                Price = req.Price
+                Nom = req.Nom,
+                Descripcio = req.Descripcio,
+                Preu = req.Preu,
+                Descompte = req.Descompte,
+                IdFamilia = req.IdFamilia
             };
 
-            productADO.Insert(dbConn);
-
-            return Results.Created($"/products/{productADO.Id}", productADO);
+            ProductADO.Insert(dbConn, producte);
+            return Results.Created($"/product/{producte.Id}", producte);
         });
     }
-
-
 }
 
-public record ProductRequest(string Code, string Name, decimal Price);  // Com ha de llegir el POST
+public record ProductRequest(string Nom, string Descripcio, decimal Preu, decimal Descompte, Guid IdFamilia);

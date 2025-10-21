@@ -1,11 +1,9 @@
 ﻿namespace Botiga.Model;
 
-public class Product
+public class Familia
 {
     public Guid Id { get; set; }
     public string Nom { get; set; } = "";
     public string Descripcio { get; set; } = "";
-    public decimal Preu { get; set; }
-    public decimal Descompte { get; set; }
-    public Guid IdFamilia { get; set; }
 }
+
