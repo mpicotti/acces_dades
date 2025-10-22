@@ -1,6 +1,7 @@
 ﻿using Botiga.Repository;
 using Botiga.Services;
 using Botiga.Model;
+using Botiga.DTO
 
 namespace Botiga.EndPoints;
 
@@ -11,8 +12,15 @@ public static class EndpointsProduct
         // GET /product
         app.MapGet("/product", () =>
         {
+            List<ProductResponse> productResponses = new List<ProductResponse>();
             List<Product> productes = ProductADO.GetAll(dbConn);
-            return Results.Ok(productes);
+
+            foreach (Product p in productes )
+            {
+                productResponses.Add(ProductResponse.FromProduct(p));
+            }
+
+            return Results.Ok(productResponses);
         });
 
         // GET /product/{id}
@@ -21,7 +29,7 @@ public static class EndpointsProduct
             Product producte = ProductADO.GetById(dbConn, id)!;
 
             return producte is not null
-                ? Results.Ok(producte)
+                ? Results.Ok(ProductResponse.FromProduct(producte)) //Fromproduct a partir del DTO
                 : Results.NotFound(new { message = $"Producte amb Id {id} no trobat." });
         });
 

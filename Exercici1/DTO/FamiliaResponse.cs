@@ -1,4 +1,6 @@
-﻿using Botiga.Model;
+﻿//lo que respon l'api (un get)
+
+using Botiga.Model;
 
 namespace Botiga.DTO;
 
