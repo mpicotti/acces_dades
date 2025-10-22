@@ -17,7 +17,7 @@ public static class EndpointsProduct
 
             foreach (Product p in productes )
             {
-                productResponses.Add(ProductResponse.FromProduct(p));
+                productResponses.Add(ProductResponse.FromProduct(p)); //FromProduct a partir del DTO i amb al bucle anar posant a cada producte
             }
 
             return Results.Ok(productResponses);
@@ -29,7 +29,7 @@ public static class EndpointsProduct
             Product producte = ProductADO.GetById(dbConn, id)!;
 
             return producte is not null
-                ? Results.Ok(ProductResponse.FromProduct(producte)) //Fromproduct a partir del DTO
+                ? Results.Ok(ProductResponse.FromProduct(producte)) //FromProduct a partir del DTO
                 : Results.NotFound(new { message = $"Producte amb Id {id} no trobat." });
         });
 
