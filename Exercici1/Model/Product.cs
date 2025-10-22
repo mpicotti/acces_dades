@@ -6,6 +6,6 @@ public class Product
     public string Nom { get; set; } = "";
     public string Descripcio { get; set; } = "";
     public decimal Preu { get; set; }
-    public decimal Descompte { get; set; }
+    public int Descompte { get; set; }
     public Guid IdFamilia { get; set; }
 }

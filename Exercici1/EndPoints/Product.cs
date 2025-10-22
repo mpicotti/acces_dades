@@ -44,4 +44,4 @@ public static class EndpointsProduct
     }
 }
 
-public record ProductRequest(string Nom, string Descripcio, decimal Preu, decimal Descompte, Guid IdFamilia);
+public record ProductRequest(string Nom, string Descripcio, decimal Preu, int Descompte, Guid IdFamilia);

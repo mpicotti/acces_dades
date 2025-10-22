@@ -44,7 +44,7 @@ namespace Botiga.Repository
                     Nom = reader.GetString(1),
                     Descripcio = reader.GetString(2),
                     Preu = reader.GetDecimal(3),
-                    Descompte = reader.GetDecimal(4),
+                    Descompte = reader.GetInt32(4),
                     IdFamilia = reader.GetGuid(5)
                 });
             }
@@ -72,7 +72,7 @@ namespace Botiga.Repository
                     Nom = reader.GetString(1),
                     Descripcio = reader.GetString(2),
                     Preu = reader.GetDecimal(3),
-                    Descompte = reader.GetDecimal(4),
+                    Descompte = reader.GetInt32(4),
                     IdFamilia = reader.GetGuid(5)
                 };
             }
