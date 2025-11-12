@@ -1,7 +1,7 @@
 ﻿using Botiga.Repository;
 using Botiga.Services;
 using Botiga.Model;
-using Botiga.DTO
+using Botiga.DTO;
 
 namespace Botiga.EndPoints;
 
