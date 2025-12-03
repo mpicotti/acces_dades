@@ -6,4 +6,4 @@ public class Familia
     public string Nom { get; set; } = "";
     public string Descripcio { get; set; } = "";
 }
-
+    

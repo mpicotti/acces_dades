@@ -4,7 +4,7 @@ using Botiga.Model;
 
 namespace Botiga.Repository
 {
-    class ProductADO
+    class ProductADO    
     {
         public static void Insert(DatabaseConnection dbConn, Product product)
         {
