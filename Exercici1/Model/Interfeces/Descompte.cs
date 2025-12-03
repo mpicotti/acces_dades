@@ -1,4 +1,6 @@
-﻿public interface IDescompte
+﻿//calcula el descompte
+
+public interface IDescompte
 {
-    void Start();
+    void CalcularDte();
 }

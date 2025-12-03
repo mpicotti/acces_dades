@@ -1,4 +1,4 @@
-﻿public class DescomptePremium : IDescompte
+﻿public class DescompteEstandard : IDescompte
 {
 
     public void CalcularDte()
