@@ -1,4 +1,6 @@
-﻿public class DescompteEstandard : IDescompte
+﻿namespace Botiga.Descomptes;
+
+public class DescompteEstandard : IDescompte
 {
 
     public void CalcularDte()

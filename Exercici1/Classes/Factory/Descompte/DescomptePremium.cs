@@ -1,4 +1,6 @@
-﻿public class DescomptePremiumFactory : IDescompteFactory
+﻿namespace Botiga.Descomptes;
+
+public class DescomptePremiumFactory : IDescompteFactory
 {
     public IDescompte CreateDescompte()
     {

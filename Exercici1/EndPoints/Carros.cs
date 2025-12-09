@@ -37,6 +37,16 @@ public static class EndpointsCarros
             CarrosADO.Insert(dbConn, carro);
             return Results.Created($"/carros/{carro.Id}", carro);
         });
+
+        // GET /carros/{id}
+        app.MapGet("/carros/{id}/linies", (Guid id) =>
+        {
+            Carros carro = CarrosADO.GetById(dbConn, id)!;
+
+            return carro is not null
+                ? Results.Ok(carro)
+                : Results.NotFound(new { message = $"Carro amb Id {id} no trobat." });
+        });
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿//calcula el descompte
+namespace Botiga.Descomptes;
 
 public interface IDescompte
 {
