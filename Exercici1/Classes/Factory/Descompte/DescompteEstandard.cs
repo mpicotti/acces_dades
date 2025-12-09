@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Botiga.Classes.Factory.Descompte
+﻿public class DescompteEstandardFactory : IDescompteFactory
 {
-    internal class DescompteEstandard
+    public IDescompte CreateDescompte()
     {
+        return new DescompteEstandard();
     }
 }

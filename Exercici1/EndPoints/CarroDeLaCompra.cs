@@ -13,7 +13,7 @@ public static class EndpointsCarroDeLaCompra
         {
             List<CarroDeLaCompra> llista = CarroDeLaCompraADO.GetAll(dbConn);
             return Results.Ok(llista);
-        });
+        }); 
 
         // GET /carrodelacompra/{id}
         app.MapGet("/carrodelacompra/{id}", (Guid id) =>
