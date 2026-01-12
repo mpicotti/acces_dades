@@ -43,9 +43,20 @@ public static class EndpointsCarroDeLaCompra
         });
 
 
-        app.MapGet("/carrodelacompra/{id}/import", (Guid id) =>
+        app.MapGet("/carrodelacompra/{id}/import", (Guid IdCarro) =>
         {
-            CarroDeLaCompra carroCompra = CarroDeLaCompraADO.GetById(dbConn, id)!;
+            List<CarroDeLaCompra> llista = CarroDeLaCompraADO.GetAllProductsCarro(dbConn, IdCarro)!;
+
+
+
+            return Results.Ok(llista);    // ??????
+
+
+
+
+
+
+
 
             //return carroCompra is not null
             //    ? Results.Ok(carroCompra)

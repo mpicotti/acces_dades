@@ -32,3 +32,5 @@ CREATE TABLE CarroDeLaCompra (
        FOREIGN KEY (IdCarro) REFERENCES Carros(Id)
       
 );
+
+ALTER TABLE Botiga.dbo.CarroDeLaCompra ADD Preu decimal(10,2) NULL;
