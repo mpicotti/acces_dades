@@ -88,16 +88,16 @@ namespace Botiga.Repository
             using SqlDataReader reader = cmd.ExecuteReader();
             CarroDeLaCompra? carroCompra = null;
 
-            if (reader.Read())
+            while (reader.Read())
             {
-                carroCompra = new CarroDeLaCompra
+                llista.Add( new CarroDeLaCompra
                 {
                     Id = reader.GetGuid(0),
                     IdCarro = reader.GetGuid(1),
                     IdProduct = reader.GetGuid(2),
                     Quantitat = reader.GetInt32(3),
                     Preu = reader.GetDecimal(4)
-                };
+                });
             }
 
             dbConn.Close();

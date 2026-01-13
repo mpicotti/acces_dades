@@ -43,9 +43,9 @@ public static class EndpointsCarroDeLaCompra
         });
 
 
-        app.MapGet("/carrodelacompra/{id}/import", (Guid IdCarro) =>
+        app.MapGet("/carrodelacompra/{id}/import", (Guid id) =>
         {
-            List<CarroDeLaCompra> llista = CarroDeLaCompraADO.GetAllProductsCarro(dbConn, IdCarro)!;
+            List<CarroDeLaCompra> llista = CarroDeLaCompraADO.GetAllProductsCarro(dbConn, id)!;
 
 
 
