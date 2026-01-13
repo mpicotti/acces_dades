@@ -1,7 +1,8 @@
-﻿using Botiga.Repository;
-using Botiga.Services;
-using Botiga.Model;
+﻿using Botiga.Classes;
 using Botiga.Descomptes;
+using Botiga.Model;
+using Botiga.Repository;
+using Botiga.Services;
 
 namespace Botiga.EndPoints;
 
@@ -52,6 +53,7 @@ public static class EndpointsCarroDeLaCompra
             //Calcular import quantitat * preu
 
 
+
             IDescompteFactory dteFactory = tipusClient switch
             {
                 "Estandard" => new DescompteEstandardFactory(),
@@ -59,7 +61,8 @@ public static class EndpointsCarroDeLaCompra
                 _ => throw new ArgumentException("Tipus de client desconegut.")
             };
 
-            //dteObj.CalcularDte
+            IDescompte descompte = dteFactory.CreateDescompte();
+            descompte.CalcularDte();
 
             //Calcular descompte //crear descompte per determinar
 
