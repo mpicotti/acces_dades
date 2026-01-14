@@ -1,5 +1,6 @@
 ﻿using Botiga.Classes;
 using Botiga.Descomptes;
+using Botiga.DTO;
 using Botiga.Model;
 using Botiga.Repository;
 using Botiga.Services;
@@ -10,12 +11,16 @@ public static class EndpointsCarroDeLaCompra
 {
     public static void MapCarroDeLaCompraEndpoints(this WebApplication app, DatabaseConnection dbConn)
     {
-        // GET /carrodelacompra
-        app.MapGet("/carrodelacompra", () =>
+        // GET /carrodelacompra      // 14/01/26 he fet el DTO
+        app.MapGet("/carrodelacompra/{id}", (Guid id) =>
         {
-            List<CarroDeLaCompra> llista = CarroDeLaCompraADO.GetAll(dbConn);
-            return Results.Ok(llista);
-        }); 
+            CarroDeLaCompra carroCompra = CarroDeLaCompraADO.GetById(dbConn, id)!;
+
+            return carroCompra is not null
+                ? Results.Ok(CarroDeLaCompraResponse.FromCarroDeLaCompra(carroCompra))
+                : Results.NotFound(new { message = $"Carro de la compra amb Id {id} no trobat." });
+        });
+
 
         // GET /carrodelacompra/{id}
         app.MapGet("/carrodelacompra/{id}", (Guid id) =>
@@ -31,18 +36,18 @@ public static class EndpointsCarroDeLaCompra
         app.MapPost("/carrodelacompra", (CarroDeLaCompraRequest req) =>
         {
             Product producte = ProductADO.GetById(dbConn, req.IdProduct)!;
-            CarroDeLaCompra carroCompra = new CarroDeLaCompra
-            {
-                Id = Guid.NewGuid(),
-                IdCarro = req.IdCarro,
-                IdProduct = req.IdProduct,
-                Preu = producte.Preu,
-                Quantitat = req.Quantitat
-            };
+
+            CarroDeLaCompra carroCompra = req.ToCarroDeLaCompra(Guid.NewGuid());
+            carroCompra.Preu = producte.Preu;
 
             CarroDeLaCompraADO.Insert(dbConn, carroCompra);
-            return Results.Created($"/carrodelacompra/{carroCompra.Id}", carroCompra);
+
+            return Results.Created(
+                $"/carrodelacompra/{carroCompra.Id}",
+                CarroDeLaCompraResponse.FromCarroDeLaCompra(carroCompra)
+            );
         });
+
 
         // Tots els productes del carro
         app.MapGet("/carrodelacompra/{id}/import", (Guid id, string tipusClient) =>

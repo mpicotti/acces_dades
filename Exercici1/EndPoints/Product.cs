@@ -36,20 +36,14 @@ public static class EndpointsProduct
         // POST /product
         app.MapPost("/product", (ProductRequest req) =>
         {
-            Product producte = new Product
-            {
-                Id = Guid.NewGuid(),
-                Nom = req.Nom,
-                Descripcio = req.Descripcio,
-                Preu = req.Preu,
-                Descompte = req.Descompte,
-                IdFamilia = req.IdFamilia
-            };
+
+            Guid id = Guid.NewGuid();
+            Product producte = req.ToProduct(id);
 
             ProductADO.Insert(dbConn, producte);
             return Results.Created($"/product/{producte.Id}", producte);
+
         });
     }
 }
 
-public record ProductRequest(string Nom, string Descripcio, decimal Preu, int Descompte, Guid IdFamilia);

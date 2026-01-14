@@ -1,4 +1,6 @@
-﻿namespace Botiga.Model;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Botiga.Model;
 
 public class CarroDeLaCompra
 {
@@ -7,5 +9,4 @@ public class CarroDeLaCompra
     public Guid IdProduct { get; set; }
     public int Quantitat { get; set; }
     public decimal Preu { get; set; }
-
 }
