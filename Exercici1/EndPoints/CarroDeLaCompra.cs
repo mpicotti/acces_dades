@@ -51,9 +51,9 @@ public static class EndpointsCarroDeLaCompra
 
 
             //Calcular import quantitat * preu
+            decimal import = CalculsCarroDeLaCompra.CalcularImport(llista);
 
-
-
+            //Calcular descompte //crear descompte per determinar
             IDescompteFactory dteFactory = tipusClient switch
             {
                 "Estandard" => new DescompteEstandardFactory(),
@@ -62,14 +62,21 @@ public static class EndpointsCarroDeLaCompra
             };
 
             IDescompte descompte = dteFactory.CreateDescompte();
-            descompte.CalcularDte();
+            
+            decimal dte = descompte.CalcularDte(import);
 
-            //Calcular descompte //crear descompte per determinar
-
-
-
+            decimal importFinal = import - dte;
+            
             //Retornar import, Descompte, Import amb descompte
-            return Results.Ok(llista);
+
+            //return Results.Ok(importFinal);
+            return Results.Ok(new
+            {
+                Import = import,
+                Descompte = dte,
+                ImportFinal = importFinal
+            });
+
         });
     }
 }

@@ -3,9 +3,11 @@
 public class DescomptePremium : IDescompte
 {
 
-    public void CalcularDte()
-    {
-     
+   public decimal CalcularDte(decimal import)
+   {
+        decimal descompte = import * 0.10m;
+
+        return descompte;
     }
 
 }

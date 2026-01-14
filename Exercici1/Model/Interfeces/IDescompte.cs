@@ -3,5 +3,5 @@ namespace Botiga.Descomptes;
 
 public interface IDescompte
 {
-    void CalcularDte();
+    decimal CalcularDte(decimal import);
 }
