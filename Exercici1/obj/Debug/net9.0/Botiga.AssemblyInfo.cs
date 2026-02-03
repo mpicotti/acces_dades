@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Botiga")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0cc7c7d50077376d3826d97f4c665e38544fcf26")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+21f14fe7f95400d3f5a3c5c8874bd91687489f01")]
 [assembly: System.Reflection.AssemblyProductAttribute("Botiga")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Botiga")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
