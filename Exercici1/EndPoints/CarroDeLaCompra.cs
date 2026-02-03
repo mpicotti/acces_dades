@@ -23,7 +23,7 @@ public static class EndpointsCarroDeLaCompra
 
 
         // GET /carrodelacompra/{id}
-        app.MapGet("/carrodelacompra/{id}", (Guid id) =>
+        app.MapGet("/carrodelacompraa/{id}", (Guid id) =>
         {
             CarroDeLaCompra carroCompra = CarroDeLaCompraADO.GetById(dbConn, id)!;
 
@@ -35,6 +35,7 @@ public static class EndpointsCarroDeLaCompra
         // POST /carrodelacompra
         app.MapPost("/carrodelacompra", (CarroDeLaCompraRequest req) =>
         {
+            // FALTA APLICAR LA VALIDACIO
             Product producte = ProductADO.GetById(dbConn, req.IdProduct)!;
 
             CarroDeLaCompra carroCompra = req.ToCarroDeLaCompra(Guid.NewGuid());
@@ -65,7 +66,7 @@ public static class EndpointsCarroDeLaCompra
                 "Premium" => new DescomptePremiumFactory(),
                 _ => throw new ArgumentException("Tipus de client desconegut.")
             };
-
+                
             IDescompte descompte = dteFactory.CreateDescompte();
             
             decimal dte = descompte.CalcularDte(import);
@@ -85,5 +86,3 @@ public static class EndpointsCarroDeLaCompra
         });
     }
 }
-
-public record CarroDeLaCompraRequest(Guid IdCarro, Guid IdProduct, int Quantitat);

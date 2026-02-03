@@ -38,5 +38,5 @@ app.MapProductEndpoints(dbConn);
 app.MapCarrosEndpoints(dbConn);
 app.MapFamiliaEndpoints(dbConn);
 app.MapCarroDeLaCompraEndpoints(dbConn);
-
+app.MapCompraEndpoints(dbConn);
 app.Run();

@@ -7,18 +7,19 @@ namespace Botiga.VALIDACIONS.ValidacioModel
 {
     public static class CarroDeLaCompraValidacio
     {
-        public static Result Validate(CarroDeLaCompra item)
+        public static Result Validate(CarroDeLaCompra req)
         {
-            if (item.IdCarro == Guid.Empty)
+            if (req.IdCarro == Guid.Empty)
                 return Result.Failure("L'ID del carro és obligatori", "IDCARRO_INVALID");
 
-            if (item.IdProduct == Guid.Empty)
+            if (req.IdProduct == Guid.Empty)
                 return Result.Failure("L'ID del producte és obligatori", "IDPRODUCT_INVALID");
 
-            if (item.Quantitat <= 0)
+            if (req.Quantitat <= 0)
                 return Result.Failure("La quantitat ha de ser major que 0", "QUANTITAT_INVALID");
 
             return Result.Ok();
         }
+
     }
 }

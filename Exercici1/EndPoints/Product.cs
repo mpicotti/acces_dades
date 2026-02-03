@@ -33,7 +33,7 @@ public static class EndpointsProduct
                 : Results.NotFound(new { message = $"Producte amb Id {id} no trobat." });
         });
 
-        // POST /product
+        // POST /product fet amb DTO
         app.MapPost("/product", (ProductRequest req) =>
         {
 
