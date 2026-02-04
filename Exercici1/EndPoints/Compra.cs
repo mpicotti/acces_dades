@@ -1,13 +1,8 @@
-﻿using Botiga.DTO;
-using Botiga.Repository;
-using Botiga.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Botiga.Services;
 using Botiga.DTO.Compras;
 using Botiga.Domain.Entities;
+using Botiga.Domain.Validators;
+using Botiga.COMMON;
 
 
 namespace Botiga.EndPoints;
@@ -23,7 +18,16 @@ public static class EndpointsCompra
             // Console.WriteLine(req);
 
             Compra compra = req.ToCompra();
+            Result result = CompraValidator.Validate(compra);
             // LiniaProducte liniaProducte = req.ToProducte();
+            if (!result.IsOk)
+            {
+                return Results.BadRequest(new 
+                {
+                    error = result.ErrorCode,
+                    message = result.ErrorMessage
+                });
+            }
 
             return Results.Ok(compra);
 
