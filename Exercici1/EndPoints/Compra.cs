@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Botiga.DTO.Compra;
+using Botiga.DTO.Compras;
+using Botiga.Domain.Entities;
 
 
 namespace Botiga.EndPoints;
@@ -19,10 +20,12 @@ public static class EndpointsCompra
         // POST /compra/CompraRequest fet amb DTO
         app.MapPost("/compra", (CompraRequest req) =>
         {
+            Console.WriteLine(req);
 
+            Compra compra = req.ToCompra();
 
+            return Results.Ok(compra);
 
-            return Results.Ok(req.Productes);
         });
     }
 }

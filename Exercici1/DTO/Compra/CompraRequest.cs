@@ -1,18 +1,18 @@
-﻿using Botiga.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Botiga.Domain.Entities;
+﻿using Botiga.Domain.Entities;
 
-namespace Botiga.DTO.Compra
+namespace Botiga.DTO.Compras;
+
+public record CompraRequest(Guid IdClient, List<LiniaProducteRequest> Productes)
 {
-    public record CompraRequest(Guid IdClient, List<LiniaProducteRequest> Productes)
+    public Compra ToCompra()
     {
-        public Compra ToCompra()
-        {
-            return new Compra(IdClient, Productes);
-        }
+        
+        Client client = new Client();
+        client.codi =  IdClient.ToString();
+        
+        Compra compraDomain = new Compra();
+        compraDomain.client = client;
+        
+        return  compraDomain;
     }
-}   
+}

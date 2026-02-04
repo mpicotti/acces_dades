@@ -253,4 +253,3 @@ C:\Users\marti\Desktop\2DAM\AccesDades\Botiga\acces_dades\Exercici1\bin\Debug\ne
 C:\Users\marti\Desktop\2DAM\AccesDades\Botiga\acces_dades\Exercici1\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\marti\Desktop\2DAM\AccesDades\Botiga\acces_dades\Exercici1\obj\Debug\net9.0\Botiga.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\marti\Desktop\2DAM\AccesDades\Botiga\acces_dades\Exercici1\bin\Debug\net9.0\Propierties\launchSettings.json
-C:\Users\marti\Desktop\2DAM\AccesDades\Botiga\acces_dades\Exercici1\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
