@@ -2,7 +2,7 @@
 
 namespace Botiga.DTO.Compras;
 
-public record CompraRequest(Guid IdClient, List<LiniaProducteRequest> Productes)
+public record CompraRequest(Guid IdClient, DateOnly Data, List<LiniaProducteRequest> Productes)
 {
     public Compra ToCompra()
     {
@@ -12,7 +12,17 @@ public record CompraRequest(Guid IdClient, List<LiniaProducteRequest> Productes)
         
         Compra compraDomain = new Compra();
         compraDomain.client = client;
+
+        compraDomain.data = Data;
         
+        List<LiniaProducte> ProductesDomain = new List<LiniaProducte>();
+
+        foreach (LiniaProducteRequest producte in Productes)
+        {
+            ProductesDomain.Add(producte.ToProducte());   
+        }
+        compraDomain.Productes = ProductesDomain;
+
         return  compraDomain;
     }
 }

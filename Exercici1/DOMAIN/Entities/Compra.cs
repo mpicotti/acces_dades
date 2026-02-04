@@ -7,8 +7,8 @@ public class Compra
     public Client client { get; set; }
 
     public DateOnly data { get; set; }
-    
-    //public List<LiniaProducte> Productes { get; set; }
+
+    public List<LiniaProducte> Productes { get; set; }
 
 
 }

@@ -9,8 +9,14 @@ namespace Botiga.DTO.Compras;
 
 public record LiniaProducteRequest(Guid IdProducte, int Quantitat)
 {
-   public LiniaProducte ToEntity()
+   public LiniaProducte ToProducte()
    {
-       return new LiniaProducte(IdProducte, Quantitat);
+        Producte producte = new Producte();
+        LiniaProducte linia = new LiniaProducte();
+
+        linia.Quantitat = Quantitat; 
+        linia.producte = producte;
+
+        return linia;
    }
 }

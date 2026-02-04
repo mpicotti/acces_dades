@@ -8,12 +8,12 @@ namespace Botiga.Domain.Entities;
 
 public class LiniaProducte
 {
-    public Guid IdProducte { get; set; }
+    public Producte producte { get; set; }
     public int Quantitat { get; set; }
 
-    public LiniaProducte(Guid idProducte, int quantitat)
-    {
-        IdProducte = idProducte;
-        Quantitat = quantitat;
-    }
+    // public LiniaProducte(Guid idProducte, int quantitat)
+    // {
+    //     IdProducte = idProducte;
+    //     Quantitat = quantitat;
+    // }
 }
