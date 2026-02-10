@@ -19,7 +19,7 @@ public record CompraRequest(Guid IdClient, DateOnly Data, List<LiniaProducteRequ
 
         foreach (LiniaProducteRequest producte in Productes)
         {
-            ProductesDomain.Add(producte.ToProducte());   
+            ProductesDomain.Add(producte.ToLiniaProducte());   
         }
         compraDomain.Productes = ProductesDomain;
 

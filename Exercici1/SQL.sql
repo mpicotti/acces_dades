@@ -34,3 +34,5 @@ CREATE TABLE CarroDeLaCompra (
 );
 
 ALTER TABLE Botiga.dbo.CarroDeLaCompra ADD Preu decimal(10,2) NULL;
+
+ALTER TABLE Botiga.dbo.Carros ADD [Data] date NULL;

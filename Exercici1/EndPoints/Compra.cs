@@ -29,6 +29,9 @@ public static class EndpointsCompra
                 });
             }
 
+            
+
+
             return Results.Ok(compra);
 
         });

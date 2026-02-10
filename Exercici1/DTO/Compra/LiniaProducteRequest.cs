@@ -9,9 +9,10 @@ namespace Botiga.DTO.Compras;
 
 public record LiniaProducteRequest(Guid IdProducte, int Quantitat)
 {
-   public LiniaProducte ToProducte()
+   public LiniaProducte ToLiniaProducte()
    {
         Producte producte = new Producte();
+        producte.Codi = IdProducte.ToString();
         LiniaProducte linia = new LiniaProducte();
 
         linia.Quantitat = Quantitat; 
