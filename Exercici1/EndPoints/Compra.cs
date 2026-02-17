@@ -1,8 +1,12 @@
-﻿using Botiga.Services;
-using Botiga.DTO.Compras;
+﻿using Botiga.COMMON;
 using Botiga.Domain.Entities;
 using Botiga.Domain.Validators;
-using Botiga.COMMON;
+using Botiga.DOMAIN.Entities;
+using Botiga.DTO.Compras;
+using Botiga.Infraestructure.Mappers;
+using Botiga.Model;
+using Botiga.Repository;
+using Botiga.Services;
 
 
 namespace Botiga.EndPoints;
@@ -29,10 +33,21 @@ public static class EndpointsCompra
                 });
             }
 
-            
+            Guid idCarroDeLaCompra = new Guid();
+            Guid idCarros = new Guid();
+
+            //CarroDeLaCompraEntity carroDeLaCompraEntity = CarroDeLaCompraMapper.ToEntity(idCarroDeLaCompra, compra);
+            CarrosEntity carrosEntity = CarrosMapper.ToEntity(idCarros, compra);
+
+            CarrosADO.InsertCarrosEntity(dbConn, carrosEntity);
 
 
-            return Results.Ok(compra);
+
+  
+
+
+            //return Results.Ok(compra);
+            return Results.Ok(carrosEntity); //per provar que surti idClient
 
         });
     }

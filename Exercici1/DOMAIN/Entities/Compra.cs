@@ -10,5 +10,4 @@ public class Compra
 
     public List<LiniaProducte> Productes { get; set; }
 
-
 }

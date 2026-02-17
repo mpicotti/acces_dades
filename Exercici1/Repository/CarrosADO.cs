@@ -1,6 +1,7 @@
-﻿using Microsoft.Data.SqlClient;
-using Botiga.Services;
+﻿using Botiga.DOMAIN.Entities;
 using Botiga.Model;
+using Botiga.Services;
+using Microsoft.Data.SqlClient;
 
 namespace Botiga.Repository
 {
@@ -21,6 +22,28 @@ namespace Botiga.Repository
             Console.WriteLine($"{rows} fila inserida.");
             dbConn.Close();
         }
+
+
+        //INSERT PER ENTITY
+        public static void InsertCarrosEntity(DatabaseConnection dbConn, CarrosEntity carrosEntity)
+        {
+            dbConn.Open();
+
+            string sql = @"INSERT INTO Carros (Id, Nom, Data, idClient)
+                           VALUES (@Id, @Nom, @Data, @idClient)";
+
+            using SqlCommand cmd = new SqlCommand(sql, dbConn.sqlConnection);
+            cmd.Parameters.AddWithValue("@Id", carrosEntity.Id);
+            cmd.Parameters.AddWithValue("@Nom", carrosEntity.Nom);
+            cmd.Parameters.AddWithValue("@Data", carrosEntity.data);
+            cmd.Parameters.AddWithValue("@idClient", carrosEntity.idClient);
+
+            int rows = cmd.ExecuteNonQuery();
+            Console.WriteLine($"{rows} fila inserida.");
+            dbConn.Close();
+        }
+        //--------------------------------------------------------
+
 
         public static List<Carros> GetAll(DatabaseConnection dbConn)
         {
