@@ -33,17 +33,23 @@ public static class EndpointsCompra
                 });
             }
 
-            Guid idCarroDeLaCompra = new Guid();
-            Guid idCarros = new Guid();
+            Guid idCarroDeLaCompra = Guid.NewGuid();
+            Guid idCarros = Guid.NewGuid();
+
+
+            //FER BUCLE PER PODER RECORRE ELS PRODUCTES I ACONSEGUIR idProducte i Quantitat per despres poder fer l'INSERT
+
+
+
 
             //CarroDeLaCompraEntity carroDeLaCompraEntity = CarroDeLaCompraMapper.ToEntity(idCarroDeLaCompra, compra);
+            
             CarrosEntity carrosEntity = CarrosMapper.ToEntity(idCarros, compra);
 
             CarrosADO.InsertCarrosEntity(dbConn, carrosEntity);
 
 
 
-  
 
 
             //return Results.Ok(compra);

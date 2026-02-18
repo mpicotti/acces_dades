@@ -1,6 +1,7 @@
-﻿using Microsoft.Data.SqlClient;
-using Botiga.Services;
+﻿using Botiga.DOMAIN.Entities;
 using Botiga.Model;
+using Botiga.Services;
+using Microsoft.Data.SqlClient;
 
 namespace Botiga.Repository
 {
@@ -18,6 +19,26 @@ namespace Botiga.Repository
             cmd.Parameters.AddWithValue("@IdCarro", carroCompra.IdCarro);
             cmd.Parameters.AddWithValue("@IdProduct", carroCompra.IdProduct);
             cmd.Parameters.AddWithValue("@Quantitat", carroCompra.Quantitat);
+
+            int rows = cmd.ExecuteNonQuery();
+            Console.WriteLine($"{rows} fila inserida.");
+            dbConn.Close();
+        }
+
+
+        public static void InsertCarroDeLaCompraEntity(DatabaseConnection dbConn, CarroDeLaCompraEntity carroDeLaCompraEntity)
+        {
+            dbConn.Open();
+
+            string sql = @"INSERT INTO CarroDeLaCompra (Id, IdCarro, IdProduct, Quantitat, Preu)
+                           VALUES (@Id, @IdCarro, @IdProduct, @Quantitat, @Preu)";
+
+            using SqlCommand cmd = new SqlCommand(sql, dbConn.sqlConnection);
+            cmd.Parameters.AddWithValue("@Id", carroDeLaCompraEntity.Id);
+            cmd.Parameters.AddWithValue("@IdCarro", carroDeLaCompraEntity.IdCarro);
+            cmd.Parameters.AddWithValue("@IdProduct", carroDeLaCompraEntity.IdProduct);
+            cmd.Parameters.AddWithValue("@Quantitat", carroDeLaCompraEntity.Quantitat);
+            cmd.Parameters.AddWithValue("@Preu", carroDeLaCompraEntity.Preu);
 
             int rows = cmd.ExecuteNonQuery();
             Console.WriteLine($"{rows} fila inserida.");

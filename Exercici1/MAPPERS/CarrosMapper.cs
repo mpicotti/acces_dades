@@ -6,11 +6,11 @@ namespace Botiga.Infraestructure.Mappers;
 
 public static class CarrosMapper
 {
-    public static CarrosEntity ToEntity(Guid idCarros, Compra compra)
+    public static CarrosEntity ToEntity(Guid idCarro, Compra compra)
         => new CarrosEntity
         {
-            Id = idCarros,
-            Nom = compra.client.nom,
+            Id = idCarro,
+            Nom = idCarro.ToString(),
             data = compra.data,
             idClient = Guid.Parse(compra.client.codi)
         };
