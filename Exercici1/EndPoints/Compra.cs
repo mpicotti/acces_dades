@@ -2,6 +2,7 @@
 using Botiga.Domain.Entities;
 using Botiga.Domain.Validators;
 using Botiga.DOMAIN.Entities;
+using Botiga.DTO;
 using Botiga.DTO.Compras;
 using Botiga.Infraestructure.Mappers;
 using Botiga.Model;
@@ -38,12 +39,20 @@ public static class EndpointsCompra
 
 
             //FER BUCLE PER PODER RECORRE ELS PRODUCTES I ACONSEGUIR idProducte i Quantitat per despres poder fer l'INSERT
+            List<LiniaProducte> productResponses = new List<LiniaProducte>();
+            List<Product> productes = ProductADO.GetAll(dbConn);
+
+            foreach (Product p in productes)
+            {
+                productResponses.Add(LiniaProducte.FromProduct(p));
+            }
+
 
 
 
 
             //CarroDeLaCompraEntity carroDeLaCompraEntity = CarroDeLaCompraMapper.ToEntity(idCarroDeLaCompra, compra);
-            
+
             CarrosEntity carrosEntity = CarrosMapper.ToEntity(idCarros, compra);
 
             CarrosADO.InsertCarrosEntity(dbConn, carrosEntity);
