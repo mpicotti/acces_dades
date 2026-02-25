@@ -17,14 +17,11 @@ public static class EndpointsCompra
     public static void MapCompraEndpoints(this WebApplication app, DatabaseConnection dbConn)
     {
 
-        // POST /compra/CompraRequest fet amb DTO
+        // POST /compra
         app.MapPost("/compra", (CompraRequest req) =>
         {
-            // Console.WriteLine(req);
-
             Compra compra = req.ToCompra();
             Result result = CompraValidator.Validate(compra);
-            // LiniaProducte liniaProducte = req.ToProducte();
             if (!result.IsOk)
             {
                 return Results.BadRequest(new 
@@ -34,36 +31,26 @@ public static class EndpointsCompra
                 });
             }
 
-            Guid idCarroDeLaCompra = Guid.NewGuid();
+          
             Guid idCarros = Guid.NewGuid();
 
-
-            //FER BUCLE PER PODER RECORRE ELS PRODUCTES I ACONSEGUIR idProducte i Quantitat per despres poder fer l'INSERT
-            List<LiniaProducte> productResponses = new List<LiniaProducte>();
-            List<Product> productes = ProductADO.GetAll(dbConn);
-
-            foreach (Product p in productes)
-            {
-                productResponses.Add(LiniaProducte.FromProduct(p));
-            }
-
-
-
-
-
-            //CarroDeLaCompraEntity carroDeLaCompraEntity = CarroDeLaCompraMapper.ToEntity(idCarroDeLaCompra, compra);
-
             CarrosEntity carrosEntity = CarrosMapper.ToEntity(idCarros, compra);
-
             CarrosADO.InsertCarrosEntity(dbConn, carrosEntity);
 
 
+            foreach (LiniaProducte lp in compra.Productes)
+            {
 
+                Guid id = Guid.NewGuid();
+                
+                Preus preu = PreusADO.GetPreu(dbConn, lp.producte.Codi);
 
+                CarroDeLaCompraEntity carroDeLaCompraEntity = CarroDeLaCompraMapper.ToEntity(id, idCarros, lp, preu);
+                CarroDeLaCompraADO.InsertCarroDeLaCompraEntity(dbConn, carroDeLaCompraEntity);
 
-            //return Results.Ok(compra);
-            return Results.Ok(carrosEntity); //per provar que surti idClient
+            }
 
+            return Results.Ok(compra);
         });
     }
 }
@@ -78,6 +65,7 @@ public static class EndpointsCompra
 //                  { id: "AAF527F6-7AB2-408C-9A56-7DF8359155E2", quantitat: 1} ] 
 //  }
  
+
 
 
 

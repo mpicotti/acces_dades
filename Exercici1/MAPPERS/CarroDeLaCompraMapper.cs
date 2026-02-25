@@ -6,21 +6,15 @@ namespace Botiga.Infraestructure.Mappers;
 
 public static class CarroDeLaCompraMapper
 {
-    public static CarroDeLaCompraEntity ToEntity(Guid idCarroDeLaCompra,Guid idCarro, Compra compra)
+    public static CarroDeLaCompraEntity ToEntity(Guid idCarroDeLaCompra,Guid idCarro, LiniaProducte liniaProducte, Preus preu)
         => new CarroDeLaCompraEntity
         {
             Id = idCarroDeLaCompra,
             IdCarro = idCarro,
-            IdProduct = compra.Productes,
-            Quantitat = product.Price
-            Preu = product.Price
+            IdProduct = Guid.Parse(liniaProducte.producte.Codi),
+            Quantitat = liniaProducte.Quantitat,
+            Preu = preu.Preu
+           
         };
 }
 
-
-
-//public Guid Id { get; set; }
-//public Guid IdCarro { get; set; }
-//public Guid IdProduct { get; set; }
-//public int Quantitat { get; set; }
-//public decimal Preu { get; set; }
