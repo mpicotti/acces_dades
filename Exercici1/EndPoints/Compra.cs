@@ -12,7 +12,7 @@ using Botiga.Services;
 
 namespace Botiga.EndPoints;
 
-public static class EndpointsCompra
+public static class EndpointsCompra 
 {
     public static void MapCompraEndpoints(this WebApplication app, DatabaseConnection dbConn)
     {
